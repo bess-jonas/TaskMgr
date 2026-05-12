@@ -3,6 +3,8 @@ package com.example.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 // @Component tells Spring to manage this class automatically,
 // meaning it gets created and run by Spring on startup without us doing it manually
@@ -26,5 +28,11 @@ public class DataLoader implements CommandLineRunner {
         taskRepository.save(new Task("Buy groceries"));
         taskRepository.save(new Task("Walk the dog"));
         taskRepository.save(new Task("Learn Spring Boot"));
+    }
+    // POST endpoint - receives a Task as JSON and saves it to the database
+    @PostMapping
+    public Task createTask(@RequestBody Task task) {
+        // save() returns the saved object, now with its auto-generated UUID
+        return taskRepository.save(task);
     }
 }
