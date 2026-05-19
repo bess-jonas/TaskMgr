@@ -1,10 +1,8 @@
 package com.example.demo;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -15,6 +13,10 @@ public class Task {
     private String title;
     boolean done;
     public Task() {}
+    private String category;
+    private String priority;
+    @Column(name="due_date")
+    private LocalDate dueTime;
 
     public Task(String title){
         this.title=title;
@@ -24,7 +26,13 @@ public class Task {
     public UUID getID() {return id;}
     public String getTitle() {return title;}
     public boolean isDone() {return done;}
+    public String getCategory() {return category;}
+    public String getPriority(){return priority;}
+    public LocalDate getDueTime() {return dueTime;}
 
     public void setTitle(String title) {this.title = title;}
     public void setDone(boolean done) {this.done = done;}
+    public void setCategory(String category) {this.category = category;}
+    public void setDueTime(LocalDate dueTime) {this.dueTime = dueTime;}
+    public void setPriority(String priority) {this.priority = priority;}
 }
