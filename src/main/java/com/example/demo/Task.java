@@ -18,7 +18,10 @@ public class Task {
     @Column(name="due_date")
     private LocalDate dueTime;
 
-    public Task(String title){
+    public Task(String title, String category, String priority, LocalDate dueTime){
+        this.category=category;
+        this.priority=priority;
+        this.dueTime=dueTime;
         this.title=title;
         this.done=false;
     }

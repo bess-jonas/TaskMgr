@@ -6,6 +6,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.time.LocalDate;
+
 // @Component tells Spring to manage this class automatically,
 // meaning it gets created and run by Spring on startup without us doing it manually
 @Component
@@ -25,9 +27,9 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
         // Save three test tasks to the database using our repository
         // UUIDs are generated automatically by JPA, we don't touch them
-        taskRepository.save(new Task("Buy groceries"));
-        taskRepository.save(new Task("Walk the dog"));
-        taskRepository.save(new Task("Learn Spring Boot"));
+        taskRepository.save(new Task("Buy groceries", "Personal", "LOW", LocalDate.of(2026, 6, 1)));
+        taskRepository.save(new Task("Walk the dog", "Personal", "MEDIUM", LocalDate.of(2026, 5, 25)));
+        taskRepository.save(new Task("Learn Spring Boot", "School", "HIGH", LocalDate.of(2026, 5, 20)));
     }
     // POST endpoint - receives a Task as JSON and saves it to the database
     @PostMapping
