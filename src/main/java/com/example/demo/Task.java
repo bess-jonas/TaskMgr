@@ -21,7 +21,7 @@ public class Task {
         this.done=false;
     }
 
-    public UUID getUUID() {return id;}
+    public UUID getID() {return id;}
     public String getTitle() {return title;}
     public boolean isDone() {return done;}
 
