@@ -26,6 +26,11 @@ public class Task {
         this.done=false;
     }
 
+    // Many tasks can belong to one project
+    @ManyToOne
+    @JoinColumn(name = "project_id") // creates a "project_id" column in the tasks table
+    private Project project;
+
     public UUID getID() {return id;}
     public String getTitle() {return title;}
     public boolean isDone() {return done;}
